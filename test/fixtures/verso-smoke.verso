@@ -1,0 +1,8 @@
+{
+  "verso": "1.0",
+  "metadata": { "title": "Verso compatibility test", "defaultKernel": "csharp", "activeLayout": "notebook" },
+  "cells": [
+    { "id": "00000001-0001-0001-0001-000000000001", "type": "markdown", "source": "# Verso compatibility test" },
+    { "id": "00000001-0001-0001-0001-000000000002", "type": "code", "language": "csharp", "source": "Console.WriteLine(\"Verso integration test\");" }
+  ]
+}

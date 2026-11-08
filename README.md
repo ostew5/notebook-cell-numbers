@@ -103,6 +103,22 @@ Tests compile the extension and run in an isolated VS Code Extension Development
 
 The suite checks automatic activation without Jupyter, the outline's visibility condition, numbering and outline entries for Jupyter and a test notebook type, navigation, configuration, cell insertions, and title updates. A separate custom webview fixture checks the notebook API limitation; it does not emulate Verso or claim end-to-end Verso coverage. CI runs the same suite on pushes and pull requests. Test fixtures are excluded from the packaged extension.
 
+### Testing the installed Verso extension
+
+An optional smoke test opens an actual `.verso` file with the installed Verso editor, lists its cells through Verso's tools, and executes a C# cell. It requires VS Code 1.99 or later, Verso Notebook, and a compatible .NET runtime. Install Verso into the test profile using your VS Code CLI:
+
+```bash
+code --user-data-dir "$PWD/.vscode-test/user-data" \
+  --extensions-dir "$PWD/.vscode-test/extensions" \
+  --install-extension Datafication.verso-notebook@1.2.3
+
+# Set these paths for your machine; omit VERSO_DOTNET_PATH if dotnet is on PATH.
+VSCODE_EXECUTABLE_PATH=/path/to/code \
+  VERSO_DOTNET_PATH=/path/to/dotnet npm run test:verso
+```
+
+The result is written to `.vscode-test/verso-report.json`. With Verso 1.2.3, the notebook opened as `verso.blazorNotebook` and its C# cell completed successfully, but VS Code exposed zero native notebook documents and the native outline provider returned zero entries. This test records the compatibility limitation; passing does not mean the extension supports Verso. It is separate from the default CI suite because it needs the installed third-party extension and .NET runtime.
+
 ---
 
 ## License

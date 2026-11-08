@@ -86,7 +86,9 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
-    "test": "node test/run.js"
+    "test": "node test/run.js",
+    "pretest:verso": "npm run compile",
+    "test:verso": "node test/runVerso.js"
   },
   "devDependencies": {
     "@types/node": "^25.6.2",

@@ -1,0 +1,21 @@
+{
+  "name": "cell-numbers-test-fixtures",
+  "publisher": "test",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.75.0" },
+  "main": "./extension.js",
+  "activationEvents": ["onNotebook:cell-numbers-test", "onCustomEditor:cell-numbers-test.custom"],
+  "contributes": {
+    "notebooks": [{
+      "type": "cell-numbers-test",
+      "displayName": "Test Notebook",
+      "selector": [{ "filenamePattern": "*.testnb" }]
+    }],
+    "customEditors": [{
+      "viewType": "cell-numbers-test.custom",
+      "displayName": "Test Custom Editor",
+      "selector": [{ "filenamePattern": "*.customnb" }],
+      "priority": "default"
+    }]
+  }
+}
